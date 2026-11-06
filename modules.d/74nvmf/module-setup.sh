@@ -233,4 +233,7 @@ install() {
     done
     inst_rules 71-nvmf-iopolicy-netapp.rules 71-nvmf-netapp.rules
     inst_rules "$moddir/95-nvmf-initqueue.rules"
+    # nvme-cli 3: ownership registry cleanup and the pre-os owner
+    inst_rules 70-nvmf-registry.rules
+    inst_hook pre-pivot 90 "$moddir/nvmf-registry-pre-os.sh"
 }
